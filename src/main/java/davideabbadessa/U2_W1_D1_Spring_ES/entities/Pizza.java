@@ -25,7 +25,7 @@ public class Pizza extends ProvaAstratta {
 
     @Override
     public String toString() {
-        return "Pizza{" +
+        return "Pizza " +
                 "toppings=" + toppings +
                 '}';
     }

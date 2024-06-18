@@ -1,12 +1,11 @@
 package davideabbadessa.U2_W1_D1_Spring_ES;
 
 
-import davideabbadessa.U2_W1_D1_Spring_ES.entities.Drink;
-import davideabbadessa.U2_W1_D1_Spring_ES.entities.Menu;
-import davideabbadessa.U2_W1_D1_Spring_ES.entities.Pizza;
-import davideabbadessa.U2_W1_D1_Spring_ES.entities.Topping;
+import davideabbadessa.U2_W1_D1_Spring_ES.entities.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.LocalDateTime;
 
 @Configuration
 public class ConfigMenu {
@@ -78,26 +77,78 @@ public class ConfigMenu {
         return new Drink("\nVino (0.75l, 13%)", 7.49, 607);
     }
 
+    //<------------ Tavoli ------------>
+    @Bean
+    public Tavolo tavolo1() {
+        return new Tavolo(1, 4, false);
+    }
+
+    @Bean
+    public Tavolo tavolo2() {
+        return new Tavolo(2, 2, false);
+    }
+
+    @Bean
+    public Tavolo tavolo3() {
+        return new Tavolo(3, 10, true);
+    }
+
+    @Bean
+    public Tavolo tavolo4() {
+        return new Tavolo(4, 12, true);
+    }
+
+    @Bean
+    public Tavolo tavolo5() {
+        return new Tavolo(5, 27, false);
+    }
+
+    //<------------ Ordini ------------>
+    @Bean
+    public Ordine ordine1(Menu menu, Tavolo tavolo1) {
+        Ordine ordine = new Ordine(1, "in corso", 4, LocalDateTime.now(), tavolo1);
+        ordine.aggiungiElementoMenu(menu.getItems().get(5)); //pizza margherita
+        ordine.aggiungiElementoMenu(menu.getItems().get(9)); //acqua
+        ordine.calcolaImportoTotale(2.0); //costo del coperto
+        return ordine;
+    }
+
+    @Bean
+    public Ordine ordine2(Menu menu, Tavolo tavolo2) {
+        Ordine ordine = new Ordine(2, "in corso", 2, LocalDateTime.now(), tavolo2);
+        ordine.aggiungiElementoMenu(menu.getItems().get(6)); //Hawaiian Pizza
+        ordine.aggiungiElementoMenu(menu.getItems().get(10)); //vino
+        ordine.calcolaImportoTotale(2.0); //costo del coperto
+        return ordine;
+    }
+
 
     @Bean
     public Menu menu() {
         Menu menu = new Menu();
+
+
+        //<------------ Topping ------------>
         menu.aggiungiProdotto(mozzarella());
         menu.aggiungiProdotto(ananas());
         menu.aggiungiProdotto(prosciutto());
         menu.aggiungiProdotto(cipolle());
         menu.aggiungiProdotto(salame());
 
-
+        //<------------ Pizze ------------>
         menu.aggiungiProdotto(margherita());
         menu.aggiungiProdotto(hawaiianPizza());
         menu.aggiungiProdotto(salamiPizza());
 
-        
+        //<------------ Drink ------------>
         menu.aggiungiProdotto(limonata());
         menu.aggiungiProdotto(acqua());
         menu.aggiungiProdotto(vino());
 
+
+        //<------------ Tavoli ------------>
+
+        //<------------ Ordini ------------>
         return menu;
     }
 }

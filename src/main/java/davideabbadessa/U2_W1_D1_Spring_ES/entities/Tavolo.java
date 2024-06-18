@@ -12,7 +12,6 @@ public class Tavolo {
         this.occupato = occupato;
     }
 
-
     public int getNumero() {
         return numero;
     }
@@ -39,10 +38,8 @@ public class Tavolo {
 
     @Override
     public String toString() {
-        return "Tavolo{" +
-                "numero=" + numero +
-                ", numeroCoperti=" + numeroCoperti +
-                ", occupato=" + occupato +
-                '}';
+        return "numero Tavolo: " + numero +
+                ", Numero Coperti: " + numeroCoperti +
+                ", Occupato? " + occupato;
     }
 }
