@@ -35,15 +35,23 @@ public class U2W1D1SpringEsApplication implements CommandLineRunner {
 
         Ordine ordine1 = context.getBean("ordine1", Ordine.class);
         Ordine ordine2 = context.getBean("ordine2", Ordine.class);
+        Ordine ordine3 = context.getBean("ordine3", Ordine.class);
 
         logger.info("Menù:");
         menu.stampaMenu();
+        logger.info("\n\t<--------------->");
 
         logger.info("Ordine 1:");
         logger.info(ordine1.toString());
+        logger.info("\n\t<--------------->");
 
         logger.info("Ordine 2:");
         logger.info(ordine2.toString());
+        logger.info("\n\t<--------------->");
+
+        logger.info("Ordine 3:");
+        logger.info(ordine3.toString());
+        logger.info("\n\t<--------------->");
     }
 
 }

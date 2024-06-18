@@ -41,7 +41,7 @@ public class Menu {
         }
     }
 
-    // getters and setters
+
     public List<ProvaAstratta> getItems() {
         return provaAstrattas;
     }

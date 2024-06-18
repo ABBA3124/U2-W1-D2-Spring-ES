@@ -80,22 +80,22 @@ public class ConfigMenu {
     //<------------ Tavoli ------------>
     @Bean
     public Tavolo tavolo1() {
-        return new Tavolo(1, 4, false);
+        return new Tavolo(1, 4, true);
     }
 
     @Bean
     public Tavolo tavolo2() {
-        return new Tavolo(2, 2, false);
+        return new Tavolo(2, 2, true);
     }
 
     @Bean
     public Tavolo tavolo3() {
-        return new Tavolo(3, 10, true);
+        return new Tavolo(15, 3, true);
     }
 
     @Bean
     public Tavolo tavolo4() {
-        return new Tavolo(4, 12, true);
+        return new Tavolo(4, 12, false);
     }
 
     @Bean
@@ -107,7 +107,7 @@ public class ConfigMenu {
     @Bean
     public Ordine ordine1(Menu menu, Tavolo tavolo1) {
         Ordine ordine = new Ordine(1, "in corso", 4, LocalDateTime.now(), tavolo1);
-        ordine.aggiungiElementoMenu(menu.getItems().get(5)); //pizza margherita
+        ordine.aggiungiElementoMenu(menu.getItems().get(5)); //margherita
         ordine.aggiungiElementoMenu(menu.getItems().get(9)); //acqua
         ordine.calcolaImportoTotale(2.0); //costo del coperto
         return ordine;
@@ -116,7 +116,20 @@ public class ConfigMenu {
     @Bean
     public Ordine ordine2(Menu menu, Tavolo tavolo2) {
         Ordine ordine = new Ordine(2, "in corso", 2, LocalDateTime.now(), tavolo2);
-        ordine.aggiungiElementoMenu(menu.getItems().get(6)); //Hawaiian Pizza
+        ordine.aggiungiElementoMenu(menu.getItems().get(6)); //hawaiian
+        ordine.aggiungiElementoMenu(menu.getItems().get(10)); //vino
+        ordine.calcolaImportoTotale(2.0); //costo del coperto
+        return ordine;
+    }
+
+    @Bean
+    public Ordine ordine3(Menu menu, Tavolo tavolo2) {
+        Ordine ordine = new Ordine(2, "in corso", 3, LocalDateTime.now(), tavolo2);
+        ordine.aggiungiElementoMenu(menu.getItems().get(5)); //margherita
+        ordine.aggiungiElementoMenu(menu.getItems().get(6)); //hawaiian
+        ordine.aggiungiElementoMenu(menu.getItems().get(7)); //salame
+        ordine.aggiungiElementoMenu(menu.getItems().get(8)); //limonata
+        ordine.aggiungiElementoMenu(menu.getItems().get(9)); //acqua
         ordine.aggiungiElementoMenu(menu.getItems().get(10)); //vino
         ordine.calcolaImportoTotale(2.0); //costo del coperto
         return ordine;
